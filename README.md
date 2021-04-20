@@ -1,5 +1,6 @@
 # Projekt_Android
 Projekt na Inżynierię Systemów Mobilnych
+
 Comments inside code are in Polish (due to nature of project).
 
 Functionalities:
