@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Projekt Android</string>
+    <string name="homepage">Strona główna</string>
+    <string name="functionality1">Funkcjonalność 1</string>
+    <string name="name">Imię</string>
+    <string name="surname">Nazwisko</string>
+    <string name="grade_list">Liczba ocen</string>
+    <string name="grade">Oceny</string>
+    <string name="done">Gotowe</string>
+    <string-array name="grades">
+        <item></item>
+        <item>2</item>
+        <item>3</item>
+        <item>3.5</item>
+        <item>4</item>
+        <item>4.5</item>
+        <item>5</item>
+    </string-array>
+</resources>
