@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:title="@string/menu_header_text"
+        app:showAsAction="ifRoom"
+        android:clickable="false"
+        android:checkable="false"
+        android:id="@+id/menu_header"/>
+
+    <item
+        android:title=""
+        app:showAsAction="ifRoom"
+        android:clickable="false"
+        android:checkable="false"
+        android:id="@+id/menu_counter"/>
+
+    <item
+        android:id="@+id/deleteSmartphones"
+        android:icon="@android:drawable/ic_menu_delete"
+        android:theme="@style/Theme.AppCompat.CompactMenu"
+        android:title="@string/deleteSmartphones_text"
+        app:showAsAction="always" />
+</menu>

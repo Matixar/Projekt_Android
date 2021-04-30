@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ProjektAndroid">
-        <activity android:name=".GradesInput"></activity>
+        <activity android:name=".CarsInput"></activity>
+        <activity android:name=".Functionality2" />
+        <activity android:name=".GradesInput" />
         <activity android:name=".Functionality1" />
         <activity android:name=".MainActivity">
             <intent-filter>
