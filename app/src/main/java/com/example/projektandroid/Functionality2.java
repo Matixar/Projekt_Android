@@ -21,6 +21,7 @@ import android.widget.ActionMenuView;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class Functionality2 extends AppCompatActivity implements AbsListView.MultiChoiceModeListener, LoaderManager.LoaderCallbacks<Cursor> {
@@ -39,6 +40,8 @@ public class Functionality2 extends AppCompatActivity implements AbsListView.Mul
         helperDB = new HelperDB(this);
         db = helperDB.getWritableDatabase();
         list = (ListView) findViewById(R.id.listViewDB);
+        TextView emptyText = (TextView) findViewById(R.id.empty);
+        list.setEmptyView(emptyText);
         setUpContextualMenu();
         setUpOnClickListener();
         
@@ -59,7 +62,11 @@ public class Functionality2 extends AppCompatActivity implements AbsListView.Mul
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent (getApplicationContext(),CarsInput.class);
+                intent.putExtra("operationType","update");
+                intent.putExtra("id",id);
 
+                startActivityForResult(intent, new Integer(0));
             }
         });
     }
@@ -69,19 +76,20 @@ public class Functionality2 extends AppCompatActivity implements AbsListView.Mul
         list.setMultiChoiceModeListener(new AbsListView.MultiChoiceModeListener() {
             int checkedCount = 0;
 
-            private ActionMenuItemView deleteCounter = findViewById(R.id.menu_counter);
+            private MenuItem deleteCounter;
             @Override
             public void onItemCheckedStateChanged(ActionMode mode, int position, long id, boolean checked) {
                 if(checked) checkedCount++;
                     else checkedCount--;
-                deleteCounter = findViewById(R.id.menu_counter);
-                deleteCounter.setText(Integer.toString(checkedCount));
+
+                deleteCounter.setTitle(Integer.toString(checkedCount));
             }
 
             @Override
             public boolean onCreateActionMode(ActionMode mode, Menu menu) {
                 MenuInflater inflater = mode.getMenuInflater();
                 inflater.inflate(R.menu.contextual_menu, menu);
+                deleteCounter = menu.findItem(R.id.menu_counter);
                 checkedCount = 0;
                 return true;
             }
@@ -98,8 +106,9 @@ public class Functionality2 extends AppCompatActivity implements AbsListView.Mul
                     case R.id.deleteSmartphones:
                         deleteSelected();
                         checkedCount = 0;
-                        deleteCounter = findViewById(R.id.menu_counter);
-                        deleteCounter.setText(Integer.toString(checkedCount));
+
+                        deleteCounter.setTitle(Integer.toString(checkedCount));
+                        Toast.makeText(Functionality2.this,"Usuwanie zaznaczonych elementów",Toast.LENGTH_SHORT).show();
                         return true;
                 }
                 return false;
@@ -160,7 +169,6 @@ public class Functionality2 extends AppCompatActivity implements AbsListView.Mul
         super.onDestroy();
 
     }
-
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
         String[] projection = {HelperDB.ID, HelperDB.COLUMN1, HelperDB.COLUMN2};
@@ -201,6 +209,24 @@ public class Functionality2 extends AppCompatActivity implements AbsListView.Mul
 
     @Override
     public void onItemCheckedStateChanged(ActionMode mode, int position, long id, boolean checked) {
+
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.cars_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle menu item selection
+        if (item.getItemId() == R.id.addCar) {
+            Intent intent = new Intent(this, CarsInput.class);
+            intent.putExtra("operationType", "insert");
+            startActivityForResult(intent, new Integer(0));
+            return true;
+        } else return super.onOptionsItemSelected(item);
 
     }
 

@@ -20,6 +20,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <provider
+            android:authorities="com.example.projektandroid.Provider"
+            android:name=".Provider"
+            android:enabled="true"
+            android:exported="true" >
+
+        </provider>
     </application>
 
 </manifest>

@@ -20,4 +20,12 @@
     <string name="empty_text">Brak rekordów</string>
     <string name="menu_header_text">Wybrane rekordy: </string>
     <string name="deleteSmartphones_text">Usuń</string>
+    <string name="brand">Marka</string>
+    <string name="model">Model</string>
+    <string name="fuel_type">Rodzaj paliwa</string>
+    <string name="www">Strona www</string>
+    <string name="button_www">WWW</string>
+    <string name="button_cancel">Anuluj</string>
+    <string name="button_save">Zapisz</string>
+
 </resources>

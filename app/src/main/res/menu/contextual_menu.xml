@@ -9,11 +9,11 @@
         android:id="@+id/menu_header"/>
 
     <item
-        android:title=""
-        app:showAsAction="ifRoom"
-        android:clickable="false"
+        android:id="@+id/menu_counter"
         android:checkable="false"
-        android:id="@+id/menu_counter"/>
+        android:clickable="false"
+        android:title=""
+        app:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/deleteSmartphones"
