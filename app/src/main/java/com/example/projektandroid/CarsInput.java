@@ -29,7 +29,7 @@ public class CarsInput extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cars_input);
-
+        //przypisanie elementów layoutu do zmiennych
         brand = (EditText) findViewById(R.id.editTextBrand);
         model = (EditText) findViewById(R.id.editTextModel);
         fuelType = (EditText) findViewById(R.id.editTextFuelType);
@@ -38,12 +38,13 @@ public class CarsInput extends AppCompatActivity {
         helperDB = new HelperDB(this);
         db = helperDB.getWritableDatabase();
 
-        getOperationType();
+        getOperationType(); //obsługa dodawania/edycji rekordu
     }
 
     public void getOperationType() {
         Bundle bundle = getIntent().getExtras();
         operationType = bundle.getString("operationType");
+        //sprawdzamy czy dodajemy nowy rekord/edytujemy istniejący
         if(operationType.contains("insert"))
             getSupportActionBar().setTitle("Dodaj pojazd do bazy");
         if(operationType.contains("update")) {
@@ -59,6 +60,7 @@ public class CarsInput extends AppCompatActivity {
 
     public boolean validate()
     {
+        //walidacja pól tekstowych: model, marka i rodzaj paliwa przynajmniej 2 znaki, strona www zawiera "." i przynajmniej 5 znaków
         if(brand.getText().toString().length() >= 2 &&
         model.getText().toString().length() >= 2 &&
         fuelType.getText().toString().length() >= 3 &&
@@ -69,6 +71,7 @@ public class CarsInput extends AppCompatActivity {
     }
 
     public void save (View view) {
+        //zapis do bazy danych
         if(validate()) {
             Intent intent = new Intent();
             intent.putExtra("operationType",operationType);
@@ -81,22 +84,24 @@ public class CarsInput extends AppCompatActivity {
     }
 
     public void cancel (View view) {
+        //anulowanie edycji
         Toast.makeText(CarsInput.this,"Anulowano",Toast.LENGTH_SHORT).show();
         finish();
     }
 
     public void www(View view) {
-        if(www.getText().toString().contains(".") && www.getText().toString().length() >= 5) {
+        //przejście do strony www
+        if(www.getText().toString().contains(".") && www.getText().toString().length() >= 5) {  //walidacja
             Uri webpage;
-            if(!www.getText().toString().startsWith("http://"))
+            if(!www.getText().toString().startsWith("http://")) //sprawdzamy czy wpisany adres rozpoczyna się od http://
                 webpage = Uri.parse("http://" + www.getText().toString());
             else webpage = Uri.parse(www.getText().toString());
-            Intent intent = new Intent(Intent.ACTION_VIEW,webpage);
+            Intent intent = new Intent(Intent.ACTION_VIEW,webpage); //przejście do przeglądarki
             startActivity(intent);
         } else Toast.makeText(CarsInput.this,"Wpisz prawidłowy adres www",Toast.LENGTH_SHORT).show();
     }
 
-    public String getRecordValue(long id, String column) {
+    public String getRecordValue(long id, String column) {  //pobranie wartości kolumny z bazy danych
         Cursor cursor = db.query(true,
                 HelperDB.TABLE_NAME,
                 new String[]{HelperDB.ID, HelperDB.COLUMN1, HelperDB.COLUMN2, HelperDB.COLUMN3, HelperDB.COLUMN4},
@@ -136,7 +141,7 @@ public class CarsInput extends AppCompatActivity {
         return value;
     }
 
-    private void addDBEntry() {
+    private void addDBEntry() { //dodanie nowego rekordu do bazy
         ContentValues values = new ContentValues();
         dbProvider = new Provider();
         EditText brand = (EditText)
@@ -156,7 +161,7 @@ public class CarsInput extends AppCompatActivity {
         finish();
     }
 
-    private void updateDBEntry() {
+    private void updateDBEntry() {  //edycja istniejącego rekordu
         ContentValues values = new ContentValues();
         dbProvider = new Provider();
 

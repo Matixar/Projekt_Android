@@ -14,7 +14,7 @@ public class Provider extends ContentProvider {
 
     private HelperDB helperDB;
 
-    private static final String IDENTIFIER = "com.example.projektandroid.Provider";
+    private static final String IDENTIFIER = "com.example.projektandroid.Provider"; //identyfikator
     public static final Uri URI_CONTENT = Uri.parse("content://" + IDENTIFIER + "/" + HelperDB.TABLE_NAME);
 
     private static final int WHOLE_TABLE = 1;
@@ -42,7 +42,7 @@ public class Provider extends ContentProvider {
         SQLiteDatabase db = helperDB.getWritableDatabase();
 
         Cursor cursor = null;
-
+        //wysyłanie zapytania do bazy danych
         switch (uriType) {
             case WHOLE_TABLE:
             case SELECTED_ROW:
@@ -71,7 +71,7 @@ public class Provider extends ContentProvider {
 
     @Nullable
     @Override
-    public Uri insert(@NonNull Uri uri, @Nullable ContentValues values) {
+    public Uri insert(@NonNull Uri uri, @Nullable ContentValues values) {   //wstawienie rekordu do bazy
         int uriType = uriMatch.match(uri);
         helperDB = new HelperDB(getContext());
         SQLiteDatabase db = helperDB.getWritableDatabase();
@@ -90,7 +90,7 @@ public class Provider extends ContentProvider {
     }
 
     @Override
-    public int delete(@NonNull Uri uri, @Nullable String selection, @Nullable String[] selectionArgs) {
+    public int delete(@NonNull Uri uri, @Nullable String selection, @Nullable String[] selectionArgs) { //usuwanie rekordu z bazy
         int uriType = uriMatch.match(uri);
         helperDB = new HelperDB(getContext());
         SQLiteDatabase db = helperDB.getWritableDatabase();

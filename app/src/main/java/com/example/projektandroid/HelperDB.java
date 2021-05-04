@@ -4,7 +4,7 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-public class HelperDB extends SQLiteOpenHelper {
+public class HelperDB extends SQLiteOpenHelper {    //pomocnik do bazy danych, odwołania do nazwy tabeli, kolumn i poleceń SQL
     public final static int DB_VERSION = 1;
     public final static String ID = "_id";
     public final static String DB_NAME = "cars.db";

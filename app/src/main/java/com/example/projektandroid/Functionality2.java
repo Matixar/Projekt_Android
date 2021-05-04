@@ -36,12 +36,14 @@ public class Functionality2 extends AppCompatActivity implements AbsListView.Mul
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_functionality2);
-
+        //inicjalizacja bazy danych
         helperDB = new HelperDB(this);
         db = helperDB.getWritableDatabase();
         list = (ListView) findViewById(R.id.listViewDB);
+        //wyświetlenie tekstu w przypadku braku rekordów w bazie
         TextView emptyText = (TextView) findViewById(R.id.empty);
         list.setEmptyView(emptyText);
+        //inicjalizacja menu kontekstowego i loadera
         setUpContextualMenu();
         setUpOnClickListener();
         
@@ -52,7 +54,7 @@ public class Functionality2 extends AppCompatActivity implements AbsListView.Mul
         getLoaderManager().initLoader(0,
                 null,
                 this);
-        String[] mapFrom = new String[]{HelperDB.COLUMN1,HelperDB.COLUMN2};
+        String[] mapFrom = new String[]{HelperDB.COLUMN1,HelperDB.COLUMN2}; //kolumna1 - marka, kolumna2 - model
         int[] mapTo = new int[]{R.id.textView_brand,R.id.textView_model};
         dbAdapter = new SimpleCursorAdapter(getApplicationContext(),R.layout.item_list,cursor,mapFrom,mapTo);
         list.setAdapter(dbAdapter);
@@ -62,6 +64,7 @@ public class Functionality2 extends AppCompatActivity implements AbsListView.Mul
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                //edycja naciśniętego rekordu
                 Intent intent = new Intent (getApplicationContext(),CarsInput.class);
                 intent.putExtra("operationType","update");
                 intent.putExtra("id",id);
@@ -72,9 +75,10 @@ public class Functionality2 extends AppCompatActivity implements AbsListView.Mul
     }
 
     public void setUpContextualMenu() {
+        //ustawienie na możliwość wielokrotnego wyboru
         list.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE_MODAL);
         list.setMultiChoiceModeListener(new AbsListView.MultiChoiceModeListener() {
-            int checkedCount = 0;
+            int checkedCount = 0;   //licznik zaznaczonych elementów
 
             private MenuItem deleteCounter;
             @Override
@@ -82,11 +86,12 @@ public class Functionality2 extends AppCompatActivity implements AbsListView.Mul
                 if(checked) checkedCount++;
                     else checkedCount--;
 
-                deleteCounter.setTitle(Integer.toString(checkedCount));
+                deleteCounter.setTitle(Integer.toString(checkedCount)); //wyświetlenie ilości zaznaczonych elementów
             }
 
             @Override
             public boolean onCreateActionMode(ActionMode mode, Menu menu) {
+                //utworzenie paska akcji
                 MenuInflater inflater = mode.getMenuInflater();
                 inflater.inflate(R.menu.contextual_menu, menu);
                 deleteCounter = menu.findItem(R.id.menu_counter);
@@ -104,7 +109,7 @@ public class Functionality2 extends AppCompatActivity implements AbsListView.Mul
                 switch(item.getItemId())
                 {
                     case R.id.deleteSmartphones:
-                        deleteSelected();
+                        deleteSelected();   //usunięcie zaznaczonych rekordów
                         checkedCount = 0;
 
                         deleteCounter.setTitle(Integer.toString(checkedCount));
@@ -121,26 +126,27 @@ public class Functionality2 extends AppCompatActivity implements AbsListView.Mul
         });
     }
 
-    private void deleteSelected() {
+    private void deleteSelected() { //usuwanie rekordów
         long checked[] = list.getCheckedItemIds();
         for (int i = 0; i < checked.length; ++i) {
             getContentResolver().delete(ContentUris.withAppendedId(com.example.projektandroid.Provider.URI_CONTENT, checked[i]), HelperDB.ID + " = " + Long.toString(checked[i]), null);
         }
     }
 
-    public void openAddCarActivity(View view) {
+    public void openAddCarActivity(View view) { //dodanie nowego rekordu poprzez floatingActionButton
         Intent intent = new Intent (getApplicationContext(),CarsInput.class);
         intent.putExtra("operationType","insert");
         startActivityForResult(intent,new Integer(0));
     }
 
-    public void returnToMenu(View view) {
+    public void returnToMenu(View view) {   //wyjście do menu głównego
         finish();
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode,Intent data)
     {
+        //obsługa po edycji/dodaniu nowego rekordu
         super.onActivityResult(requestCode,resultCode,data);
         if(resultCode == RESULT_OK) {
             Bundle bundle = data.getExtras();
@@ -175,6 +181,7 @@ public class Functionality2 extends AppCompatActivity implements AbsListView.Mul
     }
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
+        //wyświetlenie marki i modelu samochodów
         String[] projection = {HelperDB.ID, HelperDB.COLUMN1, HelperDB.COLUMN2};
         CursorLoader cLoader = new CursorLoader(this,
                 com.example.projektandroid.Provider.URI_CONTENT, projection, null, null, null);
@@ -217,6 +224,7 @@ public class Functionality2 extends AppCompatActivity implements AbsListView.Mul
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        //wyświetlenie pasku akcji
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.cars_menu, menu);
         return true;
@@ -224,7 +232,7 @@ public class Functionality2 extends AppCompatActivity implements AbsListView.Mul
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle menu item selection
+        //odpowiedzialne za wybór rekordów
         if (item.getItemId() == R.id.addCar) {
             Intent intent = new Intent(this, CarsInput.class);
             intent.putExtra("operationType", "insert");
