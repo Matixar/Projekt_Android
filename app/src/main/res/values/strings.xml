@@ -18,7 +18,7 @@
     </string-array>
     <string name="functionality2">Funkcjonalność 2</string>
     <string name="empty_text">Brak rekordów</string>
-    <string name="menu_header_text">Wybrane rekordy: </string>
+    <string name="menu_header_text">Wybrano: </string>
     <string name="deleteSmartphones_text">Usuń</string>
     <string name="brand">Marka</string>
     <string name="model">Model</string>

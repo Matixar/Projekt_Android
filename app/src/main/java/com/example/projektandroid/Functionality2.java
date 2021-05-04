@@ -134,6 +134,10 @@ public class Functionality2 extends AppCompatActivity implements AbsListView.Mul
         startActivityForResult(intent,new Integer(0));
     }
 
+    public void returnToMenu(View view) {
+        finish();
+    }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode,Intent data)
     {
