@@ -10,4 +10,7 @@ Functionalities:
 2. Smartphones database using SQLite (show records, add/modify/delete each record, open website).
 #completed
 
-3. TBD
+3. Drawing like paint compatible with smartphones rotation.
+#deadline - 27th of May
+
+4. TBD
