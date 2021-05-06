@@ -8,6 +8,6 @@ Functionalities:
 #completed
 
 2. Smartphones database using SQLite (show records, add/modify/delete each record, open website).
-#deadline - 6th of May
+#completed
 
 3. TBD
