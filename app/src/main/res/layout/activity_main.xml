@@ -42,5 +42,13 @@
             android:onClick="openFunctionality2"
             android:text="@string/functionality2" />
 
+        <Button
+            android:id="@+id/buttonFunctionality3"
+            android:layout_width="350dp"
+            android:layout_height="99dp"
+            android:layout_marginTop="20dp"
+            android:onClick="openFunctionality3"
+            android:text="@string/functionality3" />
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
