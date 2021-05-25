@@ -65,8 +65,7 @@ public class DrawView extends View {
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
 
-        // jeżeli bitmapa nie jest właśnie przywracana po obrocie -
-        // utwórz nową bitmapę o wymiarach dopasowanych do nowego widoku
+        // jeżeli bitmapa nie jest właśnie przywracana po obrocie - utwórz nową bitmapę o wymiarach dopasowanych do nowego widoku
         if (!isTurned) {
             bitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);
         } else {
