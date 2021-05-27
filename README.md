@@ -11,6 +11,7 @@ Functionalities:
 #completed
 
 3. Drawing like paint compatible with smartphones rotation.
-#deadline - 27th of May
+#completed
 
-4. TBD
+4. Downloading file from the internet with progress bar.
+#deadline - 10th of June
