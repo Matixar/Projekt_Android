@@ -29,4 +29,12 @@
     <string name="button_save">Zapisz</string>
     <string name="functionality3">Funkcjonalność 3</string>
 
+    <string name="functionality4">Funkcjonalność 4</string>
+    <string name="TextViewURLText">URL</string>
+    <string name="editTextURLText">URL pliku</string>
+    <string name="buttonGetInfoText">Pobierz dane pliku</string>
+    <string name="textViewFileSizeLabelText">Rozmiar pliku</string>
+    <string name="textViewFileTypeLabelText">Typ pliku</string>
+    <string name="buttonGetFileText">Pobierz</string>
+    <string name="textViewDownloadedLabelText">Pobrano</string>
 </resources>

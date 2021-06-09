@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Functionality4">
+
+    <TextView
+        android:id="@+id/textViewURL"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:text="@string/TextViewURLText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextURL"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="64dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button android:layout_height="wrap_content" android:layout_width="wrap_content" app:layout_constraintStart_toStartOf="parent" android:text="@string/buttonGetInfoText" android:layout_marginTop="32dp" android:layout_marginLeft="8dp" android:layout_marginStart="8dp" android:id="@+id/buttonGetInfo" app:layout_constraintEnd_toEndOf="parent" android:layout_marginRight="8dp" android:layout_marginEnd="8dp" app:layout_constraintTop_toBottomOf="@+id/textViewURL"/>
+
+    <TextView android:layout_height="wrap_content" android:layout_width="wrap_content" app:layout_constraintStart_toStartOf="@+id/textViewURL" android:text="@string/textViewFileSizeLabelText" android:layout_marginTop="64dp" android:id="@+id/textViewFileSizeLabel" app:layout_constraintTop_toBottomOf="@+id/buttonGetInfo"/>
+
+    <TextView android:layout_height="wrap_content" android:layout_width="wrap_content" android:id="@+id/textViewFileSizeValue" app:layout_constraintEnd_toEndOf="parent" android:layout_marginRight="64dp" android:layout_marginEnd="64dp" app:layout_constraintBottom_toBottomOf="@+id/textViewFileSizeLabel"/>
+
+    <TextView android:layout_height="wrap_content" android:layout_width="wrap_content" app:layout_constraintStart_toStartOf="@+id/textViewFileSizeLabel" android:text="@string/textViewFileTypeLabelText" android:layout_marginTop="32dp" android:id="@+id/textViewFileTypeLabel" app:layout_constraintTop_toBottomOf="@+id/textViewFileSizeLabel"/>
+
+    <TextView android:layout_height="wrap_content" android:layout_width="wrap_content" app:layout_constraintStart_toStartOf="@+id/textViewFileSizeValue" android:id="@+id/textViewFileTypeValue" app:layout_constraintBottom_toBottomOf="@+id/textViewFileTypeLabel"/>
+
+    <Button android:layout_height="wrap_content" android:layout_width="wrap_content" app:layout_constraintStart_toStartOf="parent" android:text="@string/buttonGetFileText" android:layout_marginTop="32dp" android:layout_marginLeft="8dp" android:layout_marginStart="8dp" android:id="@+id/buttonGetFile" app:layout_constraintEnd_toEndOf="parent" android:layout_marginRight="8dp" android:layout_marginEnd="8dp" app:layout_constraintTop_toBottomOf="@+id/textViewFileTypeValue"/>
+
+    <TextView android:layout_height="wrap_content" android:layout_width="wrap_content" app:layout_constraintStart_toStartOf="@+id/textViewFileTypeLabel" android:text="@string/textViewDownloadedLabelText" android:layout_marginTop="32dp" android:id="@+id/textViewDownloadedLabel" app:layout_constraintTop_toBottomOf="@+id/buttonGetFile"/>
+
+    <TextView android:layout_height="wrap_content" android:layout_width="wrap_content" app:layout_constraintStart_toStartOf="parent" android:layout_marginTop="32dp" android:layout_marginLeft="8dp" android:layout_marginStart="8dp" android:id="@+id/textViewDownloadPercentage" app:layout_constraintEnd_toEndOf="parent" android:layout_marginRight="8dp" android:layout_marginEnd="8dp" app:layout_constraintTop_toBottomOf="@+id/textViewDownloadedLabel"/>
+
+    <TextView android:layout_height="wrap_content" android:layout_width="wrap_content" android:id="@+id/textViewDownloaderValue" app:layout_constraintEnd_toEndOf="parent" android:layout_marginRight="64dp" android:layout_marginEnd="64dp" app:layout_constraintBottom_toBottomOf="@+id/textViewDownloadedLabel"/>
+
+    <ProgressBar android:layout_height="26dp" android:layout_width="290dp" app:layout_constraintStart_toStartOf="parent" android:layout_marginTop="8dp" android:layout_marginLeft="8dp" android:layout_marginStart="8dp" android:id="@+id/determinateBar" app:layout_constraintEnd_toEndOf="parent" android:layout_marginRight="8dp" android:layout_marginEnd="8dp" app:layout_constraintTop_toBottomOf="@+id/textViewDownloadPercentage" app:layout_constraintHorizontal_bias="0.495" android:progress="0" style="@android:style/Widget.Holo.ProgressBar.Horizontal"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

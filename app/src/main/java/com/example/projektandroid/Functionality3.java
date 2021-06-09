@@ -44,21 +44,21 @@ public class Functionality3 extends AppCompatActivity {
         // tworzenie przycisków
         Button buttonRed = new Button(this);
         Button buttonBlue = new Button(this);
-        Button buttonYellow = new Button(this);
+        Button buttonBlack = new Button(this);
         Button buttonGreen = new Button(this);
         Button buttonClear = new Button(this);
 
         // ustawienie parametrów przycisków
         buttonRed.setLayoutParams(param);
         buttonBlue.setLayoutParams(param);
-        buttonYellow.setLayoutParams(param);
+        buttonBlack.setLayoutParams(param);
         buttonGreen.setLayoutParams(param);
         buttonClear.setLayoutParams(param);
 
         // ustawienie kolorów/tesktu przycisków
         buttonRed.setBackgroundColor(Color.RED);
         buttonBlue.setBackgroundColor(Color.BLUE);
-        buttonYellow.setBackgroundColor(Color.YELLOW);
+        buttonBlack.setBackgroundColor(Color.BLACK);
         buttonGreen.setBackgroundColor(Color.GREEN);
         buttonClear.setText("X");
 
@@ -78,10 +78,10 @@ public class Functionality3 extends AppCompatActivity {
             }
         });
 
-        buttonYellow.setOnClickListener(new View.OnClickListener() {
+        buttonBlack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                drawView.setPaintColor("yellow");
+                drawView.setPaintColor("black");
             }
         });
 
@@ -102,7 +102,7 @@ public class Functionality3 extends AppCompatActivity {
         // dodanie przycisków do layoutu
         linearLayout.addView(buttonRed);
         linearLayout.addView(buttonBlue);
-        linearLayout.addView(buttonYellow);
+        linearLayout.addView(buttonBlack);
         linearLayout.addView(buttonGreen);
         linearLayout.addView(buttonClear);
 

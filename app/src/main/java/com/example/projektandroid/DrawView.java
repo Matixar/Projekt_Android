@@ -55,7 +55,7 @@ public class DrawView extends View {
         bitmapPaint = new Paint(Paint.DITHER_FLAG);
 
         paint = new Paint();
-        paint.setColor(Color.BLUE);
+        paint.setColor(Color.BLACK);
         paint.setStrokeWidth(8);
         paint.setStyle(Paint.Style.FILL);
         paint.setStyle(Paint.Style.STROKE);
@@ -151,8 +151,8 @@ public class DrawView extends View {
             case "blue":
                 paint.setColor(Color.BLUE);
                 break;
-            case "yellow":
-                paint.setColor(Color.YELLOW);
+            case "black":
+                paint.setColor(Color.BLACK);
                 break;
             case "green":
                 paint.setColor(Color.GREEN);

@@ -28,4 +28,9 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this,Functionality3.class);
         startActivity(intent);
     }
+
+    public void openFunctionality4(View view) { //obsługa przycisku funkcjonalność 4
+        Intent intent = new Intent(this,Functionality4.class);
+        startActivity(intent);
+    }
 }
