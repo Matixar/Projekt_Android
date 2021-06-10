@@ -14,4 +14,6 @@ Functionalities:
 #completed
 
 4. Downloading file from the internet with progress bar.
-#deadline - 10th of June
+#completed
+
+*Grade: 4.5*
